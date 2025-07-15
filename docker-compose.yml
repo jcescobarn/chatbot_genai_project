@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  rag-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-chatbot
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - chromadb
+    networks:
+      - project
+
+  redis:
+    image: redis:7
+    container_name: rag-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - project
+
+  chromadb:
+    image: chromadb/chroma:0.6.3
+    container_name: rag-chromadb
+    ports:
+      - "8001:8000"
+    networks:
+      - project 
+
+networks:
+  project:
+    driver: bridge
