@@ -90,14 +90,6 @@ Abre:
 http://localhost:8000/static/
 ```
 
-O directamente:
-
-```
-http://localhost:8000/
-```
-
-(Si tienes redirección `/ → /static/` configurada)
-
 ---
 
 ## 📤 Endpoint para cargar documentos
@@ -109,13 +101,11 @@ curl -X POST http://localhost:8000/api/ingest \
   -F "file=@/ruta/a/tu_documento.pdf"
 ```
 
-Esto dividirá el contenido, generará embeddings y los almacenará en tu vector store.
+Esto dividirá el contenido, generará embeddings y los almacenará en la vector store.
 
 ---
 
 ## 💬 Endpoint para hacer preguntas con RAG
-
-Consulta tu base de conocimiento con:
 
 ```
 POST /api/query
@@ -126,7 +116,6 @@ Content-Type: application/json
 }
 ```
 
-Recibirás una respuesta generada a partir del contenido previamente indexado.
 
 ---
 
@@ -144,18 +133,3 @@ Recibirás una respuesta generada a partir del contenido previamente indexado.
 │
 └── frontend/             # Código fuente Next.js (interfaz del chatbot)
 ```
-
----
-
-## 🛠️ TODOs futuros
-
-- [ ] Agregar autenticación JWT para el backend
-- [ ] Soporte para múltiples colecciones en ChromaDB
-- [ ] Descarga o exportación de respuestas como JSON o CSV
-- [ ] Interfaz para cargar documentos desde el frontend
-
----
-
-## 📃 Licencia
-
-Este proyecto se encuentra bajo licencia MIT. Siéntete libre de usarlo, modificarlo y adaptarlo para tus necesidades.
